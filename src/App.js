@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ViewItems from './components/ViewItems.js';
+import ViewItem from './components/ViewItem.js';
 
 const item = { summary: 'Test item', description: 'This is the items description', user: 'KyleRHunt@Gmail.com', dueDate: '4/18/17' };
 
@@ -16,7 +16,7 @@ class App extends Component {
           View your to do items below.
         </p>
         <div className="Item">
-          <ViewItems item={item} />
+          <ViewItem item={item} />
         </div>
       </div>
     );
