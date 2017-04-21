@@ -1,35 +1,32 @@
 import React, {Component} from "react";
+import ViewItem from "./ViewItem.js";
 
-export default class ViewItem extends Component {
+export default class ViewItems extends Component {
   constructor( props ){
     super( props );
     this.state = { item: {} };
   }
 
-  getAllItems(){
-    console.log("test");
-    fetch('http://localhost:5000/Items/', { method: 'GET', mode: 'cors' })
-      .then(response => this.setState(response.json()))
-      .then(item => {
-        this.setState({item})
-        console.log(item);
+  getItemById(id){
+    fetch(`http://localhost:5000/Items/${id}`, { method: 'GET', mode: 'cors' })
+      .then(response => response.json())
+      .then(items => {
+        let item = items[0];
+        this.setState({item, id});
+        console.log(this.state.item);
       })
       .catch(err => console.error(err));
   }
 
   componentDidMount(){
-    this.getAllItems();
+    this.getItemById(1);
   }
 
   render(){
     return (
       <div>
-        <h1>{this.state.summary}</h1>
-        <p>Details: <br />
-          {this.state.description}
-        </p>
-        <p>Created By: {this.state.user}</p>
-        <p>Due Date: {this.state.dueDate}</p>
+        <p>{this.state.item.summary}</p>
+        <ViewItem item={this.state.item} />
       </div>
     )
   }

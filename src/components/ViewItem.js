@@ -4,6 +4,7 @@ export default class ViewItem extends Component {
   constructor( props ){
     super( props );
     this.state = { ...props.item };
+    console.log( this.state );
   }
 
   render(){
