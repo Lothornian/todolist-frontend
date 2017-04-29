@@ -4,7 +4,6 @@ export default class ViewItem extends Component {
   constructor( props ){
     super( props );
     this.state = { item: {}, id: '1' };
-    console.log( this.state );
   }
 
     getItemById(id){
@@ -13,7 +12,6 @@ export default class ViewItem extends Component {
         .then(items => {
           let item = items[0];
           this.setState({item, id});
-          console.log(this.state.item);
         })
         .catch(err => console.error(err));
     }
